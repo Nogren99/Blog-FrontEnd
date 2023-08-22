@@ -9,19 +9,11 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
+    <div>
       <NavBar/>
-      <div className="card">
-        
-        <Button color="primary" variant="outlined" onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </Button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
       
-    </>
+      
+    </div>
   )
 }
 

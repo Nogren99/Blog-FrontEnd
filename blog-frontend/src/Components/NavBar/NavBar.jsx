@@ -7,10 +7,11 @@ import HomeIcon from '@mui/icons-material/Home';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
+import {Box,Grid} from '@mui/material'
 
 const Navbar = () => {
   return (
-    <AppBar position="static">
+    <AppBar >
       <Toolbar>
         <IconButton edge="start" color="inherit" aria-label="home">
           <HomeIcon />
