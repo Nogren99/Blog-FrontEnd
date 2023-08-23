@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid } from '@mui/material';
-import Post from '../Post/Post' // Asegúrate de ajustar la ruta al archivo Post.js
+import NavBar from "../NavBar/NavBar";
+import Post from '../Post/Post' 
 
 const posts = [
   {
@@ -63,6 +64,8 @@ const posts = [
 
 const PostContainer = () => {
   return (
+    <>
+    <NavBar/>
     <Grid container spacing={3}>
       {posts.map((post) => (
         <Grid item key={post.id} xs={12} >
@@ -75,6 +78,8 @@ const PostContainer = () => {
         </Grid>
       ))}
     </Grid>
+    </>
+    
   );
 };
 

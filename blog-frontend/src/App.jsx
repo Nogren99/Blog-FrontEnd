@@ -1,19 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import {NavBar,Post,PostContainer} from './Components'
-import {Button} from '@mui/material'
+import {BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import {NavBar,PostContainer,Login,Register} from './Components'
+import Profile from './pages/profile'
+import NotFound from './pages/NotFound/NotFound'
+import UserProfile from './pages/UserProfile/UserProfile'
+
+
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const user = [
+    {
+      user : 'Jorgito123',
+      name : 'Jorge',
+      birthdate : 'rn',
+      email: 'jorge@gmail.com',
+      profileImage:null,
+    }
+  ]
 
   return (
-    <div>
-      <NavBar/>
-      <PostContainer/>
+    <Router>
       
-    </div>
+
+
+      <Routes>
+          <Route path='/profile' element={ <Profile/> }  />
+          <Route path='/login' element={ <Login/> }  />
+          <Route path='/register' element={ <Register/> }  />
+          <Route path='/user' element={ <UserProfile 
+              user = {user.user}
+              name = {user.name}
+              birthdate ={user.birthdate}
+              email = {user.email}
+              profileImage = {user.profileImage}
+          /> }  />
+          {/* <Route path='/' element={ <Home/> }  />
+          
+          <Route path='/home' element={ <Home/> }  />
+          
+          
+          
+          <Route path='/post/:id' element={ <Home/> }  /> */}
+          <Route path="*" element={<NotFound />} />
+      </Routes>
+      
+      
+    </Router>
   )
 }
 
