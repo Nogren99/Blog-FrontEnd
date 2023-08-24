@@ -63,10 +63,21 @@ const posts = [
 ];
 
 const PostContainer = () => {
+/*
+  const [userPosts, setUserPosts] = useState([]);
+
+  useEffect(() => {
+    fetch('/api/:id/posts') // Ajusta la URL de la API según tu backend
+      .then(response => response.json())
+      .then(data => setUserPosts(data))
+      .catch(error => console.error('Error fetching posts:', error));
+  }, []);*/
+
   return (
     <>
     <NavBar/>
-    <Grid container spacing={3}>
+    
+    <Grid container spacing={3} style={{marginTop:'4rem'}}>
       {posts.map((post) => (
         <Grid item key={post.id} xs={12} >
           <Post

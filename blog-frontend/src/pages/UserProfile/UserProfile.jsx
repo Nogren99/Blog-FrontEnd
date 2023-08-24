@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { TextField, Button, Paper, Typography } from '@mui/material';
+import { TextField, Button, Paper, Typography, Grid } from '@mui/material';
+import { NavBar } from '../../Components';
+
 
 
 
@@ -28,7 +30,11 @@ const UserProfile = ({ user }) => {
   };
 
   return (
-    <Paper elevation={3} style={{ padding: '20px', maxWidth: '400px', margin: '0 auto' }}>
+    <>
+    <NavBar/>
+    <Grid container justifyContent="center" alignItems="flex-start" spacing={1}>
+    
+      <Grid item xs={6}>
       <Typography variant="h5" gutterBottom>
         Perfil de Usuario
       </Typography>
@@ -68,7 +74,11 @@ const UserProfile = ({ user }) => {
       <Typography variant="caption" style={{ marginTop: '10px' }}>
         Usuario desde: {user.registrationDate}
       </Typography>
-    </Paper>
+      </Grid>
+      
+    </Grid>
+    </>
+    
   );
 };
 

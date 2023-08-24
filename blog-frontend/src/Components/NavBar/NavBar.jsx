@@ -41,7 +41,7 @@ function NavBar() {
   };
 
   return (
-    <AppBar position="relative">
+    <AppBar position="fixed">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <WorkspacesIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />

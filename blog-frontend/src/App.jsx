@@ -11,13 +11,13 @@ function App() {
 
   const user = [
     {
-      user : 'Jorgito123',
+      
       name : 'Jorge',
       birthdate : 'rn',
       email: 'jorge@gmail.com',
       profileImage:null,
-    }
-  ]
+    },
+  ];
 
   return (
     <Router>
@@ -29,11 +29,7 @@ function App() {
           <Route path='/login' element={ <Login/> }  />
           <Route path='/register' element={ <Register/> }  />
           <Route path='/user' element={ <UserProfile 
-              user = {user.user}
-              name = {user.name}
-              birthdate ={user.birthdate}
-              email = {user.email}
-              profileImage = {user.profileImage}
+              user = {user[0]}
           /> }  />
           {/* <Route path='/' element={ <Home/> }  />
           
