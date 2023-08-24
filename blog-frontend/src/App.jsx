@@ -4,6 +4,7 @@ import {NavBar,PostContainer,Login,Register} from './Components'
 import Profile from './pages/profile'
 import NotFound from './pages/NotFound/NotFound'
 import UserProfile from './pages/UserProfile/UserProfile'
+import Home from './pages/Home/Home'
 
 
 
@@ -13,7 +14,7 @@ function App() {
     {
       
       name : 'Jorge',
-      birthdate : 'rn',
+      birthdate : '1990-12-12',
       email: 'jorge@gmail.com',
       profileImage:null,
     },
@@ -21,9 +22,6 @@ function App() {
 
   return (
     <Router>
-      
-
-
       <Routes>
           <Route path='/profile' element={ <Profile/> }  />
           <Route path='/login' element={ <Login/> }  />
@@ -31,12 +29,8 @@ function App() {
           <Route path='/user' element={ <UserProfile 
               user = {user[0]}
           /> }  />
-          {/* <Route path='/' element={ <Home/> }  />
-          
-          <Route path='/home' element={ <Home/> }  />
-          
-          
-          
+          <Route path='/' element={ <Home/> }  />
+          {/* 
           <Route path='/post/:id' element={ <Home/> }  /> */}
           <Route path="*" element={<NotFound />} />
       </Routes>

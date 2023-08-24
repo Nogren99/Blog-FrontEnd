@@ -12,12 +12,15 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import WorkspacesIcon from '@mui/icons-material/Workspaces';
+import {Link} from 'react-router-dom'
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 
 const pages = ['Home', 'Categories', 'Profile','+ New Post'];
+const directions = ['/','/categories','/profile','/login']
 const settings = ['Profile', 'Logout'];
+const settingsDirections = ['/user', '/login'];
 
 
 
@@ -93,8 +96,11 @@ function NavBar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem key={page} onClick={handleCloseNavMenu} >
+                  <Link to={'/'} style={{ textDecoration: 'none', color: 'inherit' }}>
                   <Typography textAlign="center">{page}</Typography>
+                  </Link>
+                  
                 </MenuItem>
               ))}
             </Menu>
@@ -123,7 +129,8 @@ function NavBar() {
             BLOGGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+            {pages.map((page,index) => (
+              <Link to={directions[index]} key={index} style={{ textDecoration: 'none' }}>
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
@@ -131,6 +138,7 @@ function NavBar() {
               >
                 {page}
               </Button>
+              </Link>
             ))}
           </Box>
 
@@ -156,9 +164,12 @@ function NavBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
+              {settings.map((setting,index) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                  <Link to={settingsDirections[index]} key={index} style={{ textDecoration: 'none' }}>
+                      <Typography textAlign="center">{setting}</Typography>
+                  </Link>
+                  
                 </MenuItem>
               ))}
             </Menu>

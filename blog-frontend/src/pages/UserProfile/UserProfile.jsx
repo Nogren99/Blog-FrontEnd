@@ -30,6 +30,7 @@ const UserProfile = ({ user }) => {
   };
 
   return (
+    
     <>
     <NavBar/>
     <Grid container justifyContent="center" alignItems="flex-start" spacing={1}>
