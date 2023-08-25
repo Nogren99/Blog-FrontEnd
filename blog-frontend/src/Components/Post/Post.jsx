@@ -14,6 +14,8 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import CommentIcon from '@mui/icons-material/Comment';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import WorkspacesIcon from '@mui/icons-material/Workspaces';
+import { Link } from 'react-router-dom';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -26,7 +28,7 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function RecipeReviewCard({ date,category, title, content, author ,img }) {
+export default function RecipeReviewCard({ date,category, title, content, author ,img, home }) {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -39,15 +41,12 @@ export default function RecipeReviewCard({ date,category, title, content, author
     <Card >
       <CardHeader
         avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            GO
+          <Avatar sx={{ bgcolor: '#1976d2' }} aria-label="recipe">
+            <WorkspacesIcon sx={{ display: { xs: 'none', md: 'flex' }}} />
           </Avatar>
         }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
+        
+        
         title={title}
         subheader={date}
       />
@@ -62,12 +61,17 @@ export default function RecipeReviewCard({ date,category, title, content, author
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        
+        {/*<IconButton aria-label="add to favorites">
           <FavoriteIcon />
-        </IconButton>
+        </IconButton> */}
         <IconButton aria-label="comment">
+          <Link to={'/post'}>
           <CommentIcon />
+          </Link>
+          
         </IconButton>
+        {home ? null : (
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
@@ -76,6 +80,7 @@ export default function RecipeReviewCard({ date,category, title, content, author
         >
           <ExpandMoreIcon />
         </ExpandMore>
+        )}
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>

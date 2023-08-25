@@ -2,6 +2,8 @@ import React from 'react';
 import { Grid } from '@mui/material';
 import NavBar from "../NavBar/NavBar";
 import Post from '../Post/Post' 
+import { useState, useEffect } from 'react';
+import axios from 'axios'
 
 const posts = [
   {
@@ -63,22 +65,26 @@ const posts = [
 ];
 
 const PostContainer = () => {
-/*
+
   const [userPosts, setUserPosts] = useState([]);
 
+  const traerPosts = async  ()=>{
+      const data = await axios('http://localhost:5251/api/Posts')
+      console.log(data.data)
+      setUserPosts(data.data) 
+  }
+
   useEffect(() => {
-    fetch('/api/:id/posts') // Ajusta la URL de la API según tu backend
-      .then(response => response.json())
-      .then(data => setUserPosts(data))
-      .catch(error => console.error('Error fetching posts:', error));
-  }, []);*/
+    traerPosts()
+  }, []);
+
 
   return (
     <>
     <NavBar/>
     
     <Grid container spacing={3} style={{marginTop:'4rem'}}>
-      {posts.map((post) => (
+      {userPosts.map((post) => (
         <Grid item key={post.id} xs={12} >
           <Post
             title={post.title}

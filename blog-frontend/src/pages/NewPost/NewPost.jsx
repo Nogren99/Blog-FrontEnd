@@ -38,7 +38,9 @@ const NewPost = () => {
     return (
         <div>
             <NavBar />
-            <Grid style={{marginTop:'6rem'}}>
+            <Grid container justifyContent={'center'} alignItems={'center'}>
+
+            <Grid sx={6} style={{marginTop:'6rem'}}>
                 <Typography variant="h3" component="h1" align="center">
                     Create New Post
                 </Typography>
@@ -79,6 +81,8 @@ const NewPost = () => {
                     </Button>
                 </form>
             </Grid>
+            </Grid>
+            
         </div>
     );
 };

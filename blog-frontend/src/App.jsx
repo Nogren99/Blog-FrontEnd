@@ -6,6 +6,7 @@ import NotFound from './pages/NotFound/NotFound'
 import UserProfile from './pages/UserProfile/UserProfile'
 import Home from './pages/Home/Home'
 import NewPost from './pages/NewPost/NewPost'
+import SinglePost from './Components/SinglePost/SinglePost'
 
 
 
@@ -20,6 +21,14 @@ function App() {
       profileImage:null,
     },
   ];
+  const post = [
+    {
+      title : 'test',
+      date: '2023-12-12',
+      content : 'post de prueba',
+      author:'me'
+    }
+  ]
 
   return (
     <Router>
@@ -28,11 +37,15 @@ function App() {
           <Route path='/login' element={ <Login/> }  />
           <Route path='/register' element={ <Register/> }  />
           <Route path='/newpost' element={ <NewPost/> }  />
+          <Route path='/post' element={ <SinglePost
+              post = {post[0]}
+          /> }  />
           <Route path='/user' element={ <UserProfile 
               user = {user[0]}
           /> }  />
           <Route path='/home' element={ <Home/> }  />
           {/* 
+          
           <Route path='/post/:id' element={ <Home/> }  /> */}
           <Route path="*" element={<NotFound />} />
       </Routes>

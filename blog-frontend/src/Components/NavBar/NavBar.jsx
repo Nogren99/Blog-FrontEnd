@@ -13,9 +13,6 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import WorkspacesIcon from '@mui/icons-material/Workspaces';
 import {Link} from 'react-router-dom'
-import { Dropdown } from '@mui/base/Dropdown';
-import InputBase from '@mui/material/InputBase';
-import SearchIcon from '@mui/icons-material/Search';
 
 const pages = ['Home', 'Profile','+ New Post'];
 const directions = ['/home','/profile','/newpost']
@@ -145,7 +142,7 @@ function NavBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Remy Sharp"  />
               </IconButton>
             </Tooltip>
             <Menu

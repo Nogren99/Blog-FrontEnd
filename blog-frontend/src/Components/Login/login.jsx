@@ -12,7 +12,10 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import './login.css'
+
 
 function Copyright(props) {
   return (
@@ -27,17 +30,37 @@ function Copyright(props) {
   );
 }
 
-// TODO remove, this demo shouldn't need to reset the theme.
+
+
 
 const defaultTheme = createTheme();
 
 export default function Login() {
+
+  const [user, setUser] = useState([]);
+  const [token, setToken] = useState(""); // Estado para almacenar el token
+
+  const traerUsuario = async () => {
+    try {
+      const response = await axios.get('http://localhost:5251/api/Login');
+      setUser(response.data);
+      setToken(response.data.token); // Establecer el token en el estado
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  }
+
+  useEffect(() => {
+    traerUsuario();
+  }, []);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
       email: data.get('email'),
       password: data.get('password'),
+      token: token // Utilizar el token almacenado
     });
   };
 
@@ -51,7 +74,7 @@ export default function Login() {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: 'url(https://source.unsplash.com/random?sergio)',
+            backgroundImage: 'url(https://source.unsplash.com/random?cats)',
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
