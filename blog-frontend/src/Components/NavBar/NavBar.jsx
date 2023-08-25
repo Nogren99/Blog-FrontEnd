@@ -13,12 +13,12 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import WorkspacesIcon from '@mui/icons-material/Workspaces';
 import {Link} from 'react-router-dom'
-import { styled, alpha } from '@mui/material/styles';
+import { Dropdown } from '@mui/base/Dropdown';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 
-const pages = ['Home', 'Categories', 'Profile','+ New Post'];
-const directions = ['/','/categories','/profile','/login']
+const pages = ['Home', 'Profile','+ New Post'];
+const directions = ['/home','/profile','/newpost']
 const settings = ['Profile', 'Logout'];
 const settingsDirections = ['/user', '/login'];
 
@@ -52,7 +52,7 @@ function NavBar() {
             variant="h6"
             noWrap
             component="a"
-            href="/"
+            href="/home"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },

@@ -33,18 +33,18 @@ const UserProfile = ({ user }) => {
     
     <>
     <NavBar/>
-    <Grid container justifyContent="center" alignItems="flex-start" spacing={1}>
+    <Grid container justifyContent="center" alignItems="flex-start" spacing={1} style={{marginTop:'8rem'}}>
     
       <Grid item xs={6}>
       <Typography variant="h5" gutterBottom>
-        Perfil de Usuario
+        User Profile
       </Typography>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '20px' }}>
         <img src={profileImage} alt="Profile" style={{ width: '150px', height: '150px', borderRadius: '50%', marginBottom: '10px' }} />
         <input type="file" accept="image/*" onChange={handleImageChange} />
       </div>
       <TextField
-        label="Nombre"
+        label="Name"
         variant="outlined"
         fullWidth
         value={name}
@@ -52,16 +52,15 @@ const UserProfile = ({ user }) => {
         style={{ marginBottom: '10px' }}
       />
       <TextField
-        label="Fecha de Nacimiento"
-        type="date"
+        label="Last Name"
         variant="outlined"
         fullWidth
-        value={birthdate}
-        onChange={(e) => setBirthdate(e.target.value)}
+        value={name}
+        onChange={(e) => setName(e.target.value)}
         style={{ marginBottom: '10px' }}
       />
       <TextField
-        label="Correo Electrónico"
+        label="Email"
         type="email"
         variant="outlined"
         fullWidth
@@ -70,10 +69,10 @@ const UserProfile = ({ user }) => {
         style={{ marginBottom: '20px' }}
       />
       <Button variant="contained" color="primary" onClick={handleSave} fullWidth>
-        Guardar Cambios
+        Save Changes
       </Button>
       <Typography variant="caption" style={{ marginTop: '10px' }}>
-        Usuario desde: {user.registrationDate}
+        User from: {user.registrationDate}
       </Typography>
       </Grid>
       

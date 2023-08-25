@@ -24,10 +24,10 @@ const Register = ({ onRegister }) => {
   return (
     <Paper elevation={3} style={{ padding: '20px', maxWidth: '300px', margin: '0 auto' }}>
       <Typography variant="h5" gutterBottom>
-        Registrarse
+        Create an account
       </Typography>
       <TextField
-        label="Nombre"
+        label="Name"
         variant="outlined"
         fullWidth
         value={firstName}
@@ -35,7 +35,7 @@ const Register = ({ onRegister }) => {
         style={{ marginBottom: '10px' }}
       />
       <TextField
-        label="Apellido"
+        label="Last Name"
         variant="outlined"
         fullWidth
         value={lastName}
@@ -43,7 +43,7 @@ const Register = ({ onRegister }) => {
         style={{ marginBottom: '10px' }}
       />
       <TextField
-        label="Usuario"
+        label="User"
         variant="outlined"
         fullWidth
         value={username}
@@ -51,7 +51,7 @@ const Register = ({ onRegister }) => {
         style={{ marginBottom: '10px' }}
       />
       <TextField
-        label="Contraseña"
+        label="Password"
         variant="outlined"
         fullWidth
         type="password"
@@ -60,7 +60,7 @@ const Register = ({ onRegister }) => {
         style={{ marginBottom: '10px' }}
       />
       <TextField
-        label="Confirmar Contraseña"
+        label="Confirm password"
         variant="outlined"
         fullWidth
         type="password"
@@ -69,11 +69,11 @@ const Register = ({ onRegister }) => {
         style={{ marginBottom: '20px' }}
       />
       <Button variant="contained" color="primary" onClick={handleRegister} fullWidth>
-        Registrarse
+        Sign Up
       </Button>
 
       <Typography variant="body2" style={{ marginTop: '10px' }}>
-        ¿Ya tienes una cuenta? <Link to="/login">Inicia Sesión</Link>
+      Have an account? <Link to="/login">Login</Link>
       </Typography>
     </Paper>
   );

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container } from '@mui/material';
+import { Container,Grid } from '@mui/material';
 import CategoryContainer from '../../Components/CategoryContainer/CategoryContainer';
 import { NavBar } from '../../Components';
 
@@ -116,14 +116,14 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <NavBar />
-      <Container style={{marginTop:'5rem'}}>
+      <Grid style={{marginTop:'5rem'}}>
         {categories.map((category) => (
           <CategoryContainer key={category} category={category} posts={posts.filter(post => post.category === category)} />
         ))}
-      </Container>
-    </div>
+      </Grid>
+    </>
   );
 };
 
