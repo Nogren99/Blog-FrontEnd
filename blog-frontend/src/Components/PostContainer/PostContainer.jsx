@@ -68,15 +68,40 @@ const PostContainer = () => {
 
   const [userPosts, setUserPosts] = useState([]);
 
+  useEffect(() => {
+    const fetchUserPosts = async () => {
+      try {
+        const jwtToken = localStorage.getItem('token');
+        const response = await axios.get('http://localhost:5251/api/accounts/current', {
+          headers: {
+            Authorization: `Bearer ${jwtToken}`
+          }
+        });
+        console.log(response);
+        setUserPosts(response.data.posts);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+
+    fetchUserPosts(); // Llamar a la función asincrónica dentro del efecto
+  }, []);
+
+  {/* 
+
+const [userPosts, setUserPosts] = useState([]);
+
   const traerPosts = async  ()=>{
-      const data = await axios('http://localhost:5251/api/Posts')
-      console.log(data.data)
+      const data = await axios('http://localhost:5251/api/accounts/current')
+      console.log(data)
       setUserPosts(data.data) 
   }
 
   useEffect(() => {
     traerPosts()
   }, []);
+*/}
+  
 
 
   return (

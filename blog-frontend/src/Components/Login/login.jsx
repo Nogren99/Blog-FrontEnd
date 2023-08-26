@@ -14,54 +14,55 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import './login.css'
-
-
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        BLOGGO
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
-
-
+import './login.css';
 
 const defaultTheme = createTheme();
 
 export default function Login() {
-
   const [user, setUser] = useState([]);
-  const [token, setToken] = useState(""); // Estado para almacenar el token
+  const [token, setToken] = useState('');
+
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await axios.post('http://localhost:5251/api/login', {
+        UserName: event.currentTarget.username.value,
+        Password: event.currentTarget.password.value
+      });
+
+      const jwtToken = response.data.token;
+      setToken(jwtToken);
+
+      localStorage.setItem('token', jwtToken);
+
+      window.location.href = '/home';
+    } catch (error) {
+      console.error('Login failed:', error);
+    }
+  };
 
   const traerUsuario = async () => {
     try {
-      const response = await axios.get('http://localhost:5251/api/Login');
+      const jwtToken = localStorage.getItem('token');
+
+      const response = await axios.get('http://localhost:5251/api/login', {
+        headers: {
+          Authorization: `Bearer ${jwtToken}`
+        }
+      });
+
       setUser(response.data);
-      setToken(response.data.token); // Establecer el token en el estado
     } catch (error) {
       console.error('Error fetching user data:', error);
     }
-  }
+  };
 
   useEffect(() => {
     traerUsuario();
   }, []);
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-      token: token // Utilizar el token almacenado
-    });
+    handleLogin(event);
   };
 
   return (
@@ -103,10 +104,10 @@ export default function Login() {
                 margin="normal"
                 required
                 fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
+                id="username"
+                label="User Name"
+                name="username"
+                autoComplete="username"
                 autoFocus
               />
               <TextField
@@ -132,13 +133,19 @@ export default function Login() {
                 Sign In
               </Button>
               
-                <Grid item>
-                  <Link href="/register" variant="body2">
-                    {"Don't have an account? Sign Up"}
-                  </Link>
-                </Grid>
+              <Grid item>
+                <Link href="/register" variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Link>
+              </Grid>
               
-              <Copyright sx={{ mt: 5 }} />
+              {
+
+                /*
+<Copyright sx={{ mt: 5 }} />
+                */
+              }
+              
             </Box>
           </Box>
         </Grid>
