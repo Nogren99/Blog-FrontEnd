@@ -23,7 +23,7 @@ const NewPost = () => {
     const [categories, setCategories] = useState([]); // Estado para las categorías
 
     useEffect(() => {
-        const dummyCategories = ['Food', 'Books', 'GAMES', 'Music'];
+        const dummyCategories = ['FOOD', 'BOOKS', 'GAMES', 'MOVIES'];
         setCategories(dummyCategories);
     }, []);
 
