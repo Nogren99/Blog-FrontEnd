@@ -40,9 +40,7 @@ function App() {
           <Route path='/post' element={ <SinglePost
               post = {post[0]}
           /> }  />
-          <Route path='/user' element={ <UserProfile 
-              user = {user[0]}
-          /> }  />
+          <Route path='/user' element={ <UserProfile/> }  />
           <Route path='/home' element={ <Home/> }  />
           {/* 
           

@@ -33,6 +33,8 @@ export default function Login() {
       const jwtToken = response.data.token;
       setToken(jwtToken);
 
+
+
       localStorage.setItem('token', jwtToken);
 
       window.location.href = '/home';
@@ -40,7 +42,7 @@ export default function Login() {
       console.error('Login failed:', error);
     }
   };
-
+  /*
   const traerUsuario = async () => {
     try {
       const jwtToken = localStorage.getItem('token');
@@ -59,7 +61,7 @@ export default function Login() {
 
   useEffect(() => {
     traerUsuario();
-  }, []);
+  }, []);*/
 
   const handleSubmit = (event) => {
     handleLogin(event);
@@ -99,7 +101,7 @@ export default function Login() {
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1, }}>
               <TextField
                 margin="normal"
                 required
@@ -109,6 +111,7 @@ export default function Login() {
                 name="username"
                 autoComplete="username"
                 autoFocus
+                
               />
               <TextField
                 margin="normal"
@@ -128,7 +131,7 @@ export default function Login() {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{ mt: 3, mb: 2, backgroundColor: '#a200ff' }}
               >
                 Sign In
               </Button>

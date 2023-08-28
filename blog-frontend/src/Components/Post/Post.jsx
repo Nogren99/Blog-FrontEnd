@@ -41,8 +41,8 @@ export default function RecipeReviewCard({ date,category, title, content, author
     <Card >
       <CardHeader
         avatar={
-          <Avatar sx={{ bgcolor: '#1976d2' }} aria-label="recipe">
-            <WorkspacesIcon sx={{ display: { xs: 'none', md: 'flex' }}} />
+          <Avatar sx={{ bgcolor: '#a200ff' }} aria-label="recipe">
+            <WorkspacesIcon sx={{ display: {  md: 'flex' }}} />
           </Avatar>
         }
         
@@ -67,7 +67,7 @@ export default function RecipeReviewCard({ date,category, title, content, author
         </IconButton> */}
         <IconButton aria-label="comment">
           <Link to={'/post'}>
-          <CommentIcon />
+          <CommentIcon sx={{ color: 'grey' }}/>
           </Link>
           
         </IconButton>

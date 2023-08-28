@@ -12,18 +12,22 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import WorkspacesIcon from '@mui/icons-material/Workspaces';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react';
 
-const pages = ['Home', 'Profile','+ New Post'];
-const directions = ['/home','/profile','/newpost']
+
+const pages = ['Home', 'Profile', '+ New Post'];
+const directions = ['/home', '/profile', '/newpost']
 const settings = ['Profile', 'Logout'];
-const settingsDirections = ['/user', '/login'];
+const settingsDirections = ['/user'];
 
 
 
 function NavBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  
+  const [token, setToken] = useState('');
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -40,8 +44,17 @@ function NavBar() {
     setAnchorElUser(null);
   };
 
+  const handleLogout = () => {
+    // Clear the token from localStorage
+    setToken('');
+    localStorage.removeItem('token');
+
+    // Redirect the user to the login page
+    window.location.href = '/login';
+  };
+
   return (
-    <AppBar position="fixed">
+    <AppBar position="fixed" sx={{ backgroundColor: '#a200ff' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <WorkspacesIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -60,7 +73,7 @@ function NavBar() {
               textDecoration: 'none',
             }}
           >
-            BLOGGO 
+            BLOGGO
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -95,13 +108,13 @@ function NavBar() {
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu} >
                   <Link to={'/'} style={{ textDecoration: 'none', color: 'inherit' }}>
-                  <Typography textAlign="center">{page}</Typography>
+                    <Typography textAlign="center">{page}</Typography>
                   </Link>
-                  
+
                 </MenuItem>
               ))}
             </Menu>
-            
+
           </Box>
 
 
@@ -126,15 +139,15 @@ function NavBar() {
             BLOGGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page,index) => (
+            {pages.map((page, index) => (
               <Link to={directions[index]} key={index} style={{ textDecoration: 'none' }}>
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
+                <Button
+                  key={page}
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  {page}
+                </Button>
               </Link>
             ))}
           </Box>
@@ -142,7 +155,7 @@ function NavBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp"  />
+                <Avatar alt="Remy Sharp" />
               </IconButton>
             </Tooltip>
             <Menu
@@ -161,17 +174,26 @@ function NavBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting,index) => (
+              {settings.map((setting, index) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Link to={settingsDirections[index]} key={index} style={{ textDecoration: 'none' }}>
+                  {setting === 'Logout' ? (
+                    <Typography
+                      textAlign="center"
+                      style={{ cursor: 'pointer' }}
+                      onClick={handleLogout}
+                    >
+                      {setting}
+                    </Typography>
+                  ) : (
+                    <Link to={settingsDirections[index]} style={{ textDecoration: 'none' }}>
                       <Typography textAlign="center">{setting}</Typography>
-                  </Link>
-                  
+                    </Link>
+                  )}
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          
+
         </Toolbar>
       </Container>
     </AppBar>

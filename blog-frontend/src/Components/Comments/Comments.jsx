@@ -33,7 +33,7 @@ const Comments = ({ comments, onAddComment }) => {
         onChange={handleCommentChange}
         sx={{ my: 2 }}
       />
-      <Button variant="contained" color="primary" onClick={handleAddComment}>
+      <Button variant="contained" sx={{ backgroundColor: '#a200ff' }} onClick={handleAddComment}>
       <WorkspacesIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
         GO
       </Button>

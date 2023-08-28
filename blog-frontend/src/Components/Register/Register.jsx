@@ -12,6 +12,7 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import axios from 'axios';
 
 
 function Copyright(props) {
@@ -32,13 +33,26 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function Register() {
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    const formData = new FormData(event.currentTarget);
+  
+    try {
+      const response = await axios.post('http://localhost:5251/api/accounts', {
+        FirstName: formData.get('name'),
+        LastName: formData.get('lastName'),
+        Email: formData.get('email'),
+        UserName: formData.get('User'),
+        Password: formData.get('password'),
+      });
+  
+      console.log('New user created:', response.data);
+  
+      window.location.href = '/login';
+      // Realiza cualquier redirección o acciones necesarias después de crear el usuario
+    } catch (error) {
+      console.error('Error creating user:', error);
+    }
   };
 
   return (
@@ -126,23 +140,13 @@ export default function Register() {
                 id="password"
                 autoComplete="current-password"
               />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="confirmPassword"
-                label="Confirm Password"
-                type="confirmPassword"
-                id="confirmPassword"
-                autoComplete="current-password"
-              />
               <Button
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{ mt: 3, mb: 2,backgroundColor: '#a200ff' }}
               >
-                Sign In
+                Sign Up
               </Button>
               
                 <Grid item>
