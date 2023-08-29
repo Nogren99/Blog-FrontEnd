@@ -12,7 +12,7 @@ const NewPost = () => {
     const [user, setUser] = useState('Usuario Ejemplo'); // Estado para el usuario
 
 
-    const dummyCategories = ['Food', 'Books', 'GAMES', 'Music'];
+    const dummyCategories = ['FOOD', 'BOOKS', 'GAMES', 'MOVIES'];
 
     const [selectedCategory, setSelectedCategory] = useState('');
 

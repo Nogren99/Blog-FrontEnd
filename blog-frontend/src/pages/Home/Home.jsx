@@ -34,7 +34,7 @@ const Home = () => {
             Authorization: `Bearer ${jwtToken}`
           }
         });
-        console.log(response);
+        console.log("esto llega del back:" + response.data);
     
         const postsByCategory = response.data; // Assuming response.data directly contains the category structure
     
@@ -46,125 +46,7 @@ const Home = () => {
     
     fetchUserPosts(); // Llamar a la función asincrónica dentro del efecto
     
-/*
-    const dummyPosts = [  
-      {
-        id: 1,
-        title: 'Mi primer post',
-        date: 'October 22, 2023 ',
-        content: 'Contenido del primer post...',
-        author: 'Usuario123',
-        category: 'BOOKS'
-      },
-      {
-        id: 2345,
-        title: 'Mi segundo post',
-        date: 'October 23, 2023 ',
-        content: 'Contenido del segundo post...',
-        author: 'Usuario123',
-        category: 'BOOKS'
-      },
-      {
-        id: 23465,
-        title: 'Mi segundo post',
-        date: 'October 23, 2023 ',
-        content: 'Contenido del segundo post...',
-        author: 'Usuario123',
-        category: 'BOOKS'
-      },
-      {
-        id: 3452,
-        title: 'Mi segundo post',
-        date: 'October 23, 2023 ',
-        content: 'Contenido del segundo post...',
-        author: 'Usuario123',
-        category: 'FOOD'
-      },
-      {
-        id: 265,
-        title: 'Mi segundo post',
-        date: 'October 23, 2023 ',
-        content: 'Contenido del segundo post...',
-        author: 'Usuario123',
-        category: 'FOOD'
-      },
-      {
-        id: 452,
-        title: 'Mi segundo post',
-        date: 'October 23, 2023 ',
-        content: 'Contenido del segundo post...',
-        author: 'Usuario123',
-        category: 'FOOD'
-      },
-      {
-        id: 2999,
-        title: 'Mi segundo post',
-        date: 'October 23, 2023 ',
-        content: 'Contenido del segundo post...',
-        author: 'Usuario123',
-        category: 'GAMES'
-      },
-      {
-        id: 288,
-        title: 'Mi segundo post',
-        date: 'October 23, 2023 ',
-        content: 'Contenido del segundo post...',
-        author: 'Usuario123',
-        category: 'GAMES'
-      },
-      {
-        id: 266,
-        title: 'Mi segundo post',
-        date: 'October 23, 2023 ',
-        content: 'Contenido del segundo post...',
-        author: 'Usuario123',
-        category: 'GAMES'
-      },
-      {
-        id: 233,
-        title: 'Mi segundo post',
-        date: 'October 23, 2023 ',
-        content: 'Contenido del segundo post...',
-        author: 'Usuario123',
-        category: 'MOVIES'
-      },
-      {
-        id: 285,
-        title: 'Mi segundo post',
-        date: 'October 23, 2023 ',
-        content: 'Contenido del segundo post...',
-        author: 'Usuario123',
-        category: 'MOVIES'
-      },
-      {
-        id: 4552,
-        title: 'Mi segundo post',
-        date: 'October 23, 2023 ',
-        content: 'Con estos cambios, deberías poder renderizar los posts correctamente en cada categoría correspondiente. Asegúrate de que la propiedad category en tus posts coincida con las categorías que estás usando para filtrar.',
-        author: 'Usuario123',
-        category: 'MOVIES'
-      },
-      {
-        id: 4752,
-        title: 'Mi segundo post',
-        date: 'October 23, 2023 ',
-        content: 'Con estos cambios, deberías poder renderizar los posts correctamente en cada categoría correspondiente. Asegúrate de que la propiedad category en tus posts coincida con las categorías que estás usando para filtrar.',
-        author: 'Usuario123',
-        category: 'MUSIC'
-      },
-      {
-        id: 4572,
-        title: 'Mi segundo post',
-        date: 'October 23, 2023 ',
-        content: 'Con estos cambios, deberías poder renderizar los posts correctamente en cada categoría correspondiente. Asegúrate de que la propiedad category en tus posts coincida con las categorías que estás usando para filtrar.',
-        author: 'Usuario123',
-        category: 'MUSIC'
-      },
 
-      // ... otros posts
-    ];
-
-    setPosts(dummyPosts); // Actualiza el estado con los posts*/
   }, []);
 
   return (

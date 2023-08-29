@@ -28,7 +28,7 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function RecipeReviewCard({ date,category, title, content, author ,img, home }) {
+export default function RecipeReviewCard({postId, date,category, title, content, author ,img, home }) {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -66,7 +66,7 @@ export default function RecipeReviewCard({ date,category, title, content, author
           <FavoriteIcon />
         </IconButton> */}
         <IconButton aria-label="comment">
-          <Link to={'/post'}>
+          <Link to={`/posts/${postId}`}>
           <CommentIcon sx={{ color: 'grey' }}/>
           </Link>
           
@@ -84,7 +84,6 @@ export default function RecipeReviewCard({ date,category, title, content, author
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>Method:</Typography>
           <Typography paragraph>
             {content}
           </Typography>
