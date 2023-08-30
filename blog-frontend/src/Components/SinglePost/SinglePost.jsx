@@ -86,7 +86,7 @@ const SinglePost = () => {
               <Post title={selectedPost.title} content={selectedPost.content} />
               <Divider sx={{ my: 2 }} />
               <Box mt={4}>
-                <Comments comments={selectedPost.comments} postId={selectedPost.id} onAddComment={handleAddComment} />
+                <Comments comments={selectedPost.comments}  onAddComment={handleAddComment} />
               </Box>
             </>
           ) : (

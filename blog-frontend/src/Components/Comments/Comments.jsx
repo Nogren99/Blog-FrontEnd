@@ -1,19 +1,25 @@
 import React, { useState } from 'react';
+import {useParams} from 'react-router-dom';
 import { Box, Typography, TextField, Button, Divider } from '@mui/material';
 import WorkspacesIcon from '@mui/icons-material/Workspaces';
+import axios from 'axios';
 
-const Comments = ({ comments, onAddComment, postId }) => {
+const Comments = ({ comments, onAddComment }) => {
+  const { postId } = useParams();
   const [newComment, setNewComment] = useState('');
 
+  console.log("llega el post id: "+ postId)
   const handleCommentChange = (event) => {
     setNewComment(event.target.value);
+    console.log("handleCommentChange"+newComment)
   };
 
   const handleAddComment = () => {
     if (newComment.trim() !== '') {
       onAddComment(newComment);
-      setNewComment('');
+      //setNewComment('');
     }
+    console.log("q pasa aca "+newComment)
   };
 
   const handleSubmit = async (event) => {
@@ -22,10 +28,14 @@ const Comments = ({ comments, onAddComment, postId }) => {
 
     try {
       const jwtToken = localStorage.getItem('token'); // Obtener el token de local storage
+      console.log("PostId: "+postId)
+      console.log("Content: "+formData.get('content'))
       const response = await axios.post('http://localhost:5251/api/Comments', {
-        AccountId: 0,
-        Content: formData.get('content'),
+        //AccountId: 0,
+        
         PostId: postId,
+        Content: formData.get('content'),
+        
       }, {
         headers: {
           Authorization: `Bearer ${jwtToken}` // Agregar el token en el encabezado
@@ -34,11 +44,19 @@ const Comments = ({ comments, onAddComment, postId }) => {
 
       console.log('New comment:', response.data);
 
-      //window.location.href = '/profile';
+      console.log("AFTERPostId: "+postId)
+      console.log("AFTERContent: "+formData.get('content'))
+
+      window.location.href = `/posts/${postId}`;
       // Realiza cualquier redirección o acciones necesarias después de crear el post
     } catch (error) {
       console.error('Error creating post:', error);
     }
+
+    
+
+
+
   };
 
   return (
@@ -52,14 +70,16 @@ const Comments = ({ comments, onAddComment, postId }) => {
       ))}
       <form onSubmit={handleSubmit}>
         <TextField
+          id="content"
           label="Add a comment"
+          name="content"
           variant="outlined"
           fullWidth
           value={newComment}
           onChange={handleCommentChange}
           sx={{ my: 2 }}
         />
-        <Button variant="contained" sx={{ backgroundColor: '#a200ff' }} onClick={handleAddComment}>
+        <Button type="submit" variant="contained" sx={{ backgroundColor: '#a200ff' }} onClick={handleAddComment}>
           <WorkspacesIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           GO
         </Button>

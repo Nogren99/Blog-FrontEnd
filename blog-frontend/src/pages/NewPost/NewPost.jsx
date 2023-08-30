@@ -64,7 +64,7 @@ const NewPost = () => {
 
             console.log('New post created:', response.data);
 
-            window.location.href = '/profile';
+            //window.location.href = '/profile';
             // Realiza cualquier redirección o acciones necesarias después de crear el post
         } catch (error) {
             console.error('Error creating post:', error);
