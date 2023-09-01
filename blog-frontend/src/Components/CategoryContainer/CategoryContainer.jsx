@@ -13,9 +13,10 @@ const CategoryContainer = ({ category, posts }) => {
       {posts.map((post) => (
           <Grid item key={post.id} xs={12} sm={4}>
             <Post
-            postId = {post.id}
+              postId = {post.id}
+              //userName = {post.userName}
               title={post.title}
-              //date={post.creationDate}
+              userName={post.userName}
               content={post.content}
               author={post.userName}
             />

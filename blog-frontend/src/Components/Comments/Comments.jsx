@@ -8,10 +8,10 @@ const Comments = ({ comments, onAddComment }) => {
   const { postId } = useParams();
   const [newComment, setNewComment] = useState('');
 
-  console.log("llega el post id: "+ postId)
+  
   const handleCommentChange = (event) => {
     setNewComment(event.target.value);
-    console.log("handleCommentChange"+newComment)
+    
   };
 
   const handleAddComment = () => {
@@ -19,7 +19,7 @@ const Comments = ({ comments, onAddComment }) => {
       onAddComment(newComment);
       //setNewComment('');
     }
-    console.log("q pasa aca "+newComment)
+    
   };
 
   const handleSubmit = async (event) => {

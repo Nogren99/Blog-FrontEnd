@@ -34,7 +34,7 @@ const Home = () => {
             Authorization: `Bearer ${jwtToken}`
           }
         });
-        console.log("esto llega del back:" + response.data);
+        console.log(response);
     
         const postsByCategory = response.data; // Assuming response.data directly contains the category structure
     

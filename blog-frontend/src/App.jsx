@@ -1,9 +1,9 @@
 import './App.css'
 import {BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import {Login,Register} from './Components'
-import Profile from './pages/profile'
-import NotFound from './pages/NotFound/NotFound'
+import Profile from './pages/Profile'
 import UserProfile from './pages/UserProfile/UserProfile'
+import NotFound from './pages/NotFound/NotFound'
 import Home from './pages/Home/Home'
 import NewPost from './pages/NewPost/NewPost'
 import SinglePost from './Components/SinglePost/SinglePost'
@@ -35,6 +35,7 @@ function App() {
     <Router>
       <Routes>
           <Route path='/profile' element={ <Profile/> }  />
+          <Route path='/profile/:userName' element={ <UserProfile/> }  />
           <Route path='/login' element={ <Login/> }  />
           <Route path='/register' element={ <Register/> }  />
           <Route path='/newpost' element={ <NewPost/> }  />

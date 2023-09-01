@@ -28,7 +28,7 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function RecipeReviewCard({postId, date,category, title, content, author ,img, home }) {
+export default function RecipeReviewCard({postId, date,category, title, content, userName ,img, home }) {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -47,8 +47,19 @@ export default function RecipeReviewCard({postId, date,category, title, content,
         }
         
         
-        title={title}
-        subheader={date}
+        
+
+        title={
+          <Typography variant="subtitle2">
+            <Link to={`/profile/${userName}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+              {userName}
+            </Link>
+          </Typography>
+        }
+
+        subheader={title}
+
+        
       />
       <CardMedia
         component="img"
