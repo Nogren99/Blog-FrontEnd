@@ -11,8 +11,7 @@ const NewPost = () => {
     const [creationDate, setCreationDate] = useState(null); // Estado para la fecha de creación
     const [user, setUser] = useState('Usuario Ejemplo'); // Estado para el usuario
 
-
-    const dummyCategories = ['FOOD', 'BOOKS', 'GAMES', 'MOVIES'];
+    const [categories, setCategories] = useState([]);
 
     const [selectedCategory, setSelectedCategory] = useState('');
 
@@ -20,11 +19,24 @@ const NewPost = () => {
     const handleCategoryChange = (event) => {
         setSelectedCategory(event.target.value);
     };
-    const [categories, setCategories] = useState([]); // Estado para las categorías
 
     useEffect(() => {
-        const dummyCategories = ['FOOD', 'BOOKS', 'GAMES', 'MOVIES'];
-        setCategories(dummyCategories);
+        const fetchCategories = async () => {
+            try {
+              const jwtToken = localStorage.getItem('token');
+              const response = await axios.get('http://localhost:5251/api/Posts/categories', {
+                headers: {
+                  Authorization: `Bearer ${jwtToken}`
+                }
+              });
+              //console.log(response);
+              setCategories(response.data);
+            } catch (error) {
+              console.error('Error fetching user data:', error);
+            }
+          };
+      
+          fetchCategories();
     }, []);
 
 
@@ -64,7 +76,7 @@ const NewPost = () => {
 
             console.log('New post created:', response.data);
 
-            //window.location.href = '/profile';
+            window.location.href = '/profile';
             // Realiza cualquier redirección o acciones necesarias después de crear el post
         } catch (error) {
             console.error('Error creating post:', error);
