@@ -63,7 +63,7 @@ export default function RecipeReviewCard({postId, date,category, title, content,
       />
       <CardMedia
         component="img"
-        height="194"
+        height="auto"
         image="/images/example.jpg"
       />
       <CardContent>
