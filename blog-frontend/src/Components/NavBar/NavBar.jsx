@@ -16,8 +16,8 @@ import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 
 
-const pages = ['Home', 'Profile', '+ New Post'];
-const directions = ['/home', '/profile', '/newpost']
+const pages = ['My Blog', '+ New Post'];
+const directions = ['/profile', '/newpost']
 const settings = ['Profile', 'Logout'];
 const settingsDirections = ['/user'];
 

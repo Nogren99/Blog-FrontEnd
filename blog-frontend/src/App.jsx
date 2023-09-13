@@ -8,6 +8,7 @@ import Home from './pages/Home/Home'
 import NewPost from './pages/NewPost/NewPost'
 import SinglePost from './Components/SinglePost/SinglePost'
 import Loader from './Components/Loader/Loader'
+import User from './pages/User/User'
 
 
 
@@ -40,12 +41,9 @@ function App() {
           <Route path='/register' element={ <Register/> }  />
           <Route path='/newpost' element={ <NewPost/> }  />
           <Route path='/posts/:postId' element={ <SinglePost/> }  />
-          <Route path='/user' element={ <UserProfile/> }  />
+          <Route path='/user' element={ <User/> }  />
           <Route path='/loader' element={<Loader/>}/>
           <Route path='/home' element={ <Home/> }  />
-          {/* 
-          
-          <Route path='/post/:id' element={ <Home/> }  /> */}
           <Route path="*" element={<NotFound />} />
       </Routes>
       

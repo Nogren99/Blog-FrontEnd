@@ -13,6 +13,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
+import WorkspacesIcon from '@mui/icons-material/Workspaces';
 
 
 function Copyright(props) {
@@ -84,8 +85,11 @@ export default function Register() {
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-              <LockOutlinedIcon />
+              <WorkspacesIcon />
             </Avatar>
+            <Typography component="h1" variant="h3">
+              BLOGGO
+            </Typography>
             <Typography component="h1" variant="h5">
               Sign Up
             </Typography>

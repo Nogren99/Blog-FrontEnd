@@ -3,6 +3,7 @@ import {useParams} from 'react-router-dom';
 import { Box, Typography, TextField, Button, Divider } from '@mui/material';
 import WorkspacesIcon from '@mui/icons-material/Workspaces';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Comments = ({ comments, onAddComment }) => {
   const { postId } = useParams();
@@ -64,7 +65,14 @@ const Comments = ({ comments, onAddComment }) => {
       <Typography variant="h6">Comments</Typography>
       <Divider sx={{ my: 2 }} />
       {comments.map((comment, index) => (
-        <Box key={index} sx={{ border: '1px solid #ccc', padding: '10px', marginBottom: '10px' }}>
+        <Box key={index} sx={{ border: '1px solid #ccc', padding: '10px', marginBottom: '10px' , textAlign: 'left' }}>
+          <Typography variant="body01"> 
+
+          <Link to={`/profile/${comment.userName}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+          <strong>{comment.userName}</strong>:
+            </Link>
+
+            </Typography>
           <Typography variant="body1">{comment.content}</Typography>
         </Box>
       ))}

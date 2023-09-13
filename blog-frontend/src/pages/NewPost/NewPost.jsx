@@ -134,14 +134,6 @@ const NewPost = () => {
                                 ))}
                             </Select>
                         </FormControl>
-                        <Container>
-                            <input
-                                type="file"
-                                accept="image/*"
-                                onChange={handleImageChange}
-                                style={{ margin: '16px 0' }}
-                            />
-                        </Container>
 
                         <Button type="submit" variant="contained" sx={{ backgroundColor: '#a200ff' }}>
                             <WorkspacesIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />

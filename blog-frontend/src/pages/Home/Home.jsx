@@ -52,7 +52,7 @@ const Home = () => {
   return (
     <>
       <NavBar />
-      <Grid style={{ marginTop: '5rem' }}>
+      <Grid style={{ marginTop: '6.5rem' }}>
       {Object.keys(posts).map((category) => (
         <CategoryContainer
           key={category}

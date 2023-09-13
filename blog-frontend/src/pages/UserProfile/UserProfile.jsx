@@ -40,6 +40,7 @@ const UserProfile = () => {
       {userPosts.map((post) => (
         <Grid item key={post.id} xs={12} >
           <Post
+            postId = {post.id}
             title={post.title}
             date={post.date}
             content={post.content}

@@ -6,7 +6,7 @@ const CategoryContainer = ({ category, posts }) => {
   return (
     <div>
         
-      <Typography variant="h4" component="h2">
+      <Typography variant="h4" component="h2" marginTop={5} marginBottom={5}>
         {category}
       </Typography>
       <Grid container spacing={3}>

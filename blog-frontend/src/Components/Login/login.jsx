@@ -15,6 +15,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './login.css';
+import WorkspacesIcon from '@mui/icons-material/Workspaces';
 
 const defaultTheme = createTheme();
 
@@ -96,9 +97,13 @@ export default function Login() {
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-              <LockOutlinedIcon />
+              <WorkspacesIcon />
             </Avatar>
-            <Typography component="h1" variant="h5">
+            <Typography component="h1" variant="h3">
+              BLOGGO
+            </Typography>
+
+            <Typography component="h2" variant="h5">
               Sign in
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1, }}>
@@ -114,6 +119,7 @@ export default function Login() {
                 
               />
               <TextField
+              
                 margin="normal"
                 required
                 fullWidth
@@ -124,7 +130,7 @@ export default function Login() {
                 autoComplete="current-password"
               />
               <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
+                control={<Checkbox value="remember" style={{ color: '#a200ff' }}  />}
                 label="Remember me"
               />
               <Button
